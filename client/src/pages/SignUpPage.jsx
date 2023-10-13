@@ -7,7 +7,7 @@ const SignUpPage = () => {
     <div>
       <h1>Instagram SignUp</h1>
       <SignUpForm/>
-      <Footer link={'/'} textToggler={'Log In'} />
+      <Footer link={'/login'} textToggler={'Log In'} />
     </div>
   )
 }
