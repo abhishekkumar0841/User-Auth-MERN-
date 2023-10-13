@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
+  const navigate = useNavigate()
   const [inputText, setInputText] = useState({
     firstName: "",
     lastName: "",
@@ -46,9 +48,12 @@ const SignUpForm = () => {
         confirmPassword: "",
         bio: "",
       });
+
+     if(response.status === 200){
+      navigate('/login')
+     }
     } catch (error) {
-      console.log("ERROR AT SIGNUPFORM.JSX--");
-      console.log(error.message);
+      console.log("ERROR AT SIGNUPFORM.JSX--", error);
     }
   };
 
