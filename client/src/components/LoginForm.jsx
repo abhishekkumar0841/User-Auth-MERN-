@@ -33,6 +33,7 @@ const LoginForm = () => {
       const loginData = await response.json();
       console.log("PRINTING LOGIN DATA-->", loginData);
       console.log("PRINTING USER TOKEN-->", loginData.userToken);
+      
       const userToken = loginData.userToken;
       localStorage.setItem("token", userToken);
 
