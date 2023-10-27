@@ -1,0 +1,132 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { singUpThunk } from "../Redux/authSlice/authSlice";
+import Layout from "./Layout";
+import toast from "react-hot-toast";
+
+const SignupPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+    role: "",
+    bio: "",
+  });
+
+  function onInputChange(e) {
+    const { name, value } = e.target;
+    setInput({
+      ...input,
+      [name]: value,
+    });
+  }
+
+  async function onFormSubmit(e) {
+    e.preventDefault();
+    console.log("SINGUP DATA-->", input)
+    const res = await dispatch(singUpThunk(input));
+    console.log("CHECK RES IN SIGNUP->", res);
+
+    if(res?.payload?.success){
+      navigate('/login')
+      toast.success("Login Now")
+    }
+  }
+
+  return (
+    <Layout>
+      <div className=" flex items-center justify-center min-h-[90vh] text-white">
+        <form
+          onSubmit={onFormSubmit}
+          className=" border p-5 flex flex-col gap-4"
+        >
+          <h1 className="text-center font-bold text-2xl">Signup Page</h1>
+          <div>
+            <label htmlFor="fullName">FullName:</label>
+            <input
+              className="bg-transparent border px-4 py-2 font-semibold w-full"
+              type="text"
+              placeholder="Enter you fullName"
+              value={input.fullName}
+              onChange={onInputChange}
+              name="fullName"
+              id="fullName"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              className="bg-transparent border px-4 py-2 font-semibold w-full"
+              type="text"
+              placeholder="Enter you email"
+              value={input.email}
+              onChange={onInputChange}
+              name="email"
+              id="email"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              className="bg-transparent border px-4 py-2 font-semibold w-full"
+              type="text"
+              placeholder="Enter you password"
+              value={input.password}
+              onChange={onInputChange}
+              name="password"
+              id="password"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="role">Role:</label>
+            <input
+              className="bg-transparent border px-4 py-2 font-semibold w-full"
+              type="text"
+              placeholder="Enter you role"
+              value={input.role}
+              onChange={onInputChange}
+              name="role"
+              id="role"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="bio">Bio:</label>
+            <input
+              className="bg-transparent border px-4 py-2 font-semibold w-full"
+              type="text"
+              placeholder="Enter you bio"
+              value={input.bio}
+              onChange={onInputChange}
+              name="bio"
+              id="bio"
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className=" bg-green-400 px-4 py-2 w-full font-bold text-2xl text-slate-800 hover:bg-green-500 transition-all duration-300 ease-in-out"
+            >
+              Signup
+            </button>
+          </div>
+          <div className=" flex items-center justify-between py-2">
+            <p>Already have an account?</p>
+          <Link to={'/login'} className="">Login</Link>
+        </div>
+        </form>
+        
+      </div>
+    </Layout>
+  );
+};
+
+export default SignupPage;

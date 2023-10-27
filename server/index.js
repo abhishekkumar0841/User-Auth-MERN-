@@ -1,28 +1,36 @@
-const express = require("express")
-const dbConnection = require("./config/dbConnection")
-const userRoutes = require("./routes/userRoutes")
-const cookeParser = require('cookie-parser')
-const cors = require('cors')
+import express from 'express'
+import {config} from 'dotenv'
+import dbConn from './config/dbConn.js'
+import userRoutes from './routes/user.routes.js'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import morgan from 'morgan'
 
-require('dotenv').config()
-
-const PORT = process.env.PORT || 5000
-
+config()
 const app = express()
 
+const PORT = process.env.PORT || 5050
+
 app.use(cors({
-    origin: [process.env.CLIENT_URL || 'http://localhost:3000'],
-    credentials: true, //credentials allow us to set cookies or etc..
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
 }))
+
+app.use(cookieParser())
 app.use(express.json())
-app.use(cookeParser())
+app.use(morgan('dev'))
+
 app.use('/api/auth', userRoutes)
 
-app.get('/', (req, res)=>{
-    res.send("Server is up and running")
+app.use('/', (req, res)=>{
+    res.send("Home page")
+})
+
+app.use('*', (req, res)=>{
+    res.send("**Error** 404 || This page does not exists!")
 })
 
 app.listen(PORT, async()=>{
-    await dbConnection();
-    console.log(`Server is running on http://localhost:${PORT}`)
+    await dbConn()
+    console.log(`Server is up and running on http://localhost:${PORT}`)
 })

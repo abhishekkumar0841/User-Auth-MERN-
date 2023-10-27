@@ -1,21 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
 
-const Footer = ({ link ,textToggler }) => {
-
+const Footer = () => {
   return (
-    <div>
-      <div>
-        <Link>
-          <p>Forgot Password?</p>
-        </Link>
-      </div>
-
-      <div>
-        <Link to={link}>{textToggler}</Link>
-      </div>
+    <div className=' min-h-[5vh] bg-black w-full text-center text-white'>
+      footer
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
