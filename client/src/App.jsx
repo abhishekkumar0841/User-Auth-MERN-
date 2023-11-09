@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import SignupPage from "./Components/SignupPage";
-import HomePage from "./Components/HomePage";
-import Profile from "./Components/Profile";
-import ErrorPage from "./Components/ErrorPage";
+import SignupPage from "./components/SignupPage";
+import HomePage from "./components/HomePage";
+import Profile from "./components/Profile";
+import ErrorPage from "./components/ErrorPage";
 import { useSelector } from "react-redux";
-import LoginPage from "./Components/LoginPage";
+import LoginPage from "./components/LoginPage";
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
