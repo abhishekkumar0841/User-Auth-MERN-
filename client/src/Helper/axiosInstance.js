@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const BASE_URL = "http://localhost:5005/api/auth";
-const BASE_URL = 'https://auth-app-server-hplf.onrender.com/'
+const BASE_URL = 'https://auth-app-server-hplf.onrender.com'
 
 const axiosInstance = axios.create();
 
