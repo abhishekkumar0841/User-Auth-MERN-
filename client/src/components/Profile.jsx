@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const Profile = () => {
 
-  const {isLoggedIn, user} = useSelector(state=> state.auth)
+  const { user} = useSelector(state=> state.auth)
 
   return (
     <Layout>

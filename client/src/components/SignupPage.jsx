@@ -27,9 +27,7 @@ const SignupPage = () => {
 
   async function onFormSubmit(e) {
     e.preventDefault();
-    console.log("SINGUP DATA-->", input)
     const res = await dispatch(singUpThunk(input));
-    console.log("CHECK RES IN SIGNUP->", res);
 
     if(res?.payload?.success){
       navigate('/login')

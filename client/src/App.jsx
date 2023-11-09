@@ -1,16 +1,16 @@
 import React from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import LoginPage from "./Components/LoginPage";
 import SignupPage from "./Components/SignupPage";
 import HomePage from "./Components/HomePage";
 import Profile from "./Components/Profile";
 import ErrorPage from "./Components/ErrorPage";
 import { useSelector } from "react-redux";
+import LoginPage from "./Components/LoginPage";
 
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  console.log('isLoggedIn in app.jsx:', isLoggedIn)
+  // console.log('isLoggedIn in app.jsx:', isLoggedIn)
 
   return (
     <Routes>

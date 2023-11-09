@@ -38,7 +38,6 @@ export const loginThunk = createAsyncThunk("/user/login", async (data) => {
       },
       error: "Something went wrong while login!l",
     });
-    console.log((await response).data);
     return (await response).data;
   } catch (error) {
     toast.error("Login failed!");
@@ -81,7 +80,6 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(loginThunk.fulfilled, (state, action) => {
-      console.log("ACTION OF LOGINTHUNE:", action);
 
       //setting values in localStorage only if action?.payload?.success because if i set the values in local storage without any check then is sets to undefined is the response is not success
       if (action?.payload?.success) {
