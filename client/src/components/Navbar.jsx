@@ -24,7 +24,7 @@ const Navbar = () => {
         {isLoggedIn ? (
           <Link to={"/profile"}>
             <img
-              src={`https://api.dicebear.com/5.x/initials/svg?seed=${user.fullName}`}
+              src={`https://api.dicebear.com/5.x/initials/svg?seed=${user?.fullName}`}
               alt="User Pic"
               width={30}
             />

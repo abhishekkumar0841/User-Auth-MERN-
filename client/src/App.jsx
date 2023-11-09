@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 const App = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
+  console.log('isLoggedIn in app.jsx:', isLoggedIn)
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

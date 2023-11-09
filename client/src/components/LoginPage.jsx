@@ -20,9 +20,10 @@ const LoginPage = () => {
     });
   }
 
-  async function onFormSubmit(e) {
+   async function onFormSubmit(e) {
     e.preventDefault();
-    const res = await dispatch(loginThunk(input))
+    const res =  await dispatch(loginThunk(input))
+    console.log('res of login:', res)
 
     if(res?.payload?.success){
       navigate('/profile')
